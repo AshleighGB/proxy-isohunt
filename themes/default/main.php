@@ -15,7 +15,7 @@ $csrfValid = $_GET['cs'];
 $csrfToken = mt_rand();
 $randomID = mt_rand();
 $redirect = $_GET['redirect'];
-if($checkSession && $csrfValid && $somevalueGET) {
+if($checkSession && $csrfValid) {
   // we're all good here!
 } else {
   header('Location: https://proxy-isohunt.azurewebsites.net/index.php?PROXYSESSID='.$randomID.'&cs='.$csrfToken);
