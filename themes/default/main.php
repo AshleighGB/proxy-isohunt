@@ -14,12 +14,11 @@ $checkSession = $_GET['PROXYSESSID'];
 $csrfValid = $_GET['cs'];
 $csrfToken = mt_rand();
 $randomID = mt_rand();
-$somevalueGET = $_GET['something'];
 $redirect = $_GET['redirect'];
 if($checkSession && $csrfValid && $somevalueGET) {
   // we're all good here!
 } else {
-  header('Location: https://proxy-kickass.azurewebsites.net/index.php?PROXYSESSID='.$randomID.'&cs='.$csrfToken.'&something='.$somevalue);
+  header('Location: https://proxy-isohunt.azurewebsites.net/index.php?PROXYSESSID='.$randomID.'&cs='.$csrfToken);
 }
 if($redirect) {
 header('Location: '.$redirect);
@@ -74,7 +73,7 @@ function Admin() {
 				<nav id="nav">
 					<ul>
 						<li class="current"><a href="/">ISOHUNT Proxy</a></li>
-            <li class="current"><a href="/?redirect=https://proxy-g2g.azurewebsites.net/">G2G Proxy</a></li>
+            <li><a href="/?redirect=https://proxy-g2g.azurewebsites.net/">G2G Proxy</a></li>
             <li><a href="/?redirect=https://proxy-kickass.azurewebsites.net/">kickass Proxy</a></li>
 						<?php $ip = $_SERVER['REMOTE_ADDR'];
             if($ip == '80.192.143.114') {echo "<li><a href='/admin.php?settings'>Admin Area</a></li>";}
@@ -99,7 +98,7 @@ function Admin() {
 					<div id="urlform" class="urlform" >
 		<form action="/includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);" class="form">
 			<input type="text" name="u" id="input" size="40" class="textbox" autofocus="false" style="border: 1px solid #ffffff; display: none;" value="https://isohunt.to">
-			<button type="submit" value="Let Me In!" class="button" style="color:white;margin-top: 8px;">Loading Isohunt...</button>
+			<button type="submit" value="Loading Isohunt..." class="button" style="color:white;margin-top: 8px;">Loading Isohunt...</button>
 			<ul id="options">
 				<?php foreach ($toShow as $option) echo '<li><input type="checkbox" name="'.$option['name'].'" id="'.$option['name'].'"'.$option['checked'].'><label for="'.$option['name'].'" class="tooltip" onmouseover="tooltip(\''.$option['escaped_desc'].'\')" onmouseout="exit();">'.$option['title'].'</label></li>';?>
 			</ul>
