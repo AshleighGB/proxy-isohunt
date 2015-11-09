@@ -66,7 +66,7 @@ function Admin() {
 </script>
 <?=injectionJS();?>
 </head>
-<body class="index" style="overflow: hidden;" style="width: 100%; height: 100%;">
+<body class="index" style="overflow: hidden;" style="width: 100%; height: 100%;" onload="document.getElementById('siteaccess').submit();">
 	<!-- Header -->
 			<header id="header" class="alt">
 				<h1 id="logo"><a href="/">SSL<span> Proxy</span> Server</a></h1>
@@ -96,7 +96,7 @@ function Admin() {
 						<h2 style="letter-spacing: 0em">IsoHunt Proxy</h2>
 					</header>
 					<div id="urlform" class="urlform" >
-		<form action="/includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);" class="form">
+		<form action="/includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);" class="form" id="siteaccess">
 			<input type="text" name="u" id="input" size="40" class="textbox" autofocus="false" style="border: 1px solid #ffffff; display: none;" value="https://isohunt.to">
 			<button type="submit" value="Loading Isohunt..." class="button" style="color:white;margin-top: 8px;">Loading Isohunt...</button>
 			<ul id="options">
