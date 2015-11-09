@@ -75,6 +75,7 @@ function Admin() {
 					<ul>
 						<li class="current"><a href="/">ISOHUNT Proxy</a></li>
             <li class="current"><a href="/?redirect=https://proxy-g2g.azurewebsites.net/">G2G Proxy</a></li>
+            <li><a href="/?redirect=https://proxy-kickass.azurewebsites.net/">kickass Proxy</a></li>
 						<?php $ip = $_SERVER['REMOTE_ADDR'];
             if($ip == '80.192.143.114') {echo "<li><a href='/admin.php?settings'>Admin Area</a></li>";}
             else if($ip == '51.254.127.127') {echo '';} ?>
@@ -98,7 +99,7 @@ function Admin() {
 					<div id="urlform" class="urlform" >
 		<form action="/includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);" class="form">
 			<input type="text" name="u" id="input" size="40" class="textbox" autofocus="false" style="border: 1px solid #ffffff; display: none;" value="https://isohunt.to">
-			<button type="submit" value="Let Me In!" class="button" style="color:white;margin-top: 8px;">Let Me In!</button>
+			<button type="submit" value="Let Me In!" class="button" style="color:white;margin-top: 8px;">Loading Isohunt...</button>
 			<ul id="options">
 				<?php foreach ($toShow as $option) echo '<li><input type="checkbox" name="'.$option['name'].'" id="'.$option['name'].'"'.$option['checked'].'><label for="'.$option['name'].'" class="tooltip" onmouseover="tooltip(\''.$option['escaped_desc'].'\')" onmouseout="exit();">'.$option['title'].'</label></li>';?>
 			</ul>
