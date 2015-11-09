@@ -1,26 +1,18 @@
-<link rel="stylesheet" href="/themes/2015/css/metro-bootstrap.css">
-<link rel="stylesheet" href="/themes/2015/css/metro-bootstrap-responsive.css">
-<!-- Metro JS Core Files -->
-<script src="/themes/2015/js/metro-core.js"></script>
-<script src="/themes/2015/js/metro-loader.js"></script>
-<script src="/themes/2015/js/metro-scroll.js"></script>
-<!-- End -->
 <style type="text/css">
    /* Make room for the mini-form */
    html body { margin-top: 60px; }
-   #title1{ font-size: 16px; font-weight: 200; color:  #3b5999;}
-   #title2{ font-size: 16px; font-weight: 100; color: white;}
+
    /* Reset all styles */
- 	#include * {
+   #include * {
       text-align: left;
       border: 0; padding: 0; margin: 0;
       font: 12px Verdana,Arial,Tahoma;
       color: #eee;
       font-weight: normal;
+      background: transparent;
       text-decoration: none;
       display: inline;
    }
-   .bg-pink {background-color: #dc4fad; }
    #include p {
       margin: 4px 0 0 10px;
       display: block;
@@ -31,22 +23,22 @@
    #include script {
       display:none;
    }
-   
+
    /* Style the mini-form div */
    #include {
-      border-top: 3px solid #3b5999;
-      border-bottom: 3px solid #3b5999;
-      background: #333333;
+      border-top: 3px solid #ce6c1c;
+      border-bottom: 3px solid #ce6c1c;
+      background: #0b1933;
       position: absolute;
       top:0; left:0;
       width: 100%;
       height: 50px;
       z-index: 100000;
    }
-   
+
    /* Mini-form elements */
    #include a {
-      color: #4099ff;
+      color: #ce6c1c;
    }
    #include a:hover {
       color: #ccc;
@@ -55,12 +47,11 @@
       padding: 2px;
       background: #eee;
       color: #111;
-      border: 1px solid #3b5999;
-      height: 30px;
+      border: 1px solid #ccc;
    }
    #include .url-input:focus {
       background: #fff;
-      border: 1px solid #3b5999;
+      border: 1px solid #ce6c1c;
    }
    #include .url-button {
       font-weight: bold;
@@ -77,21 +68,22 @@ echo <<<OUT
    <form action="{$proxy}/includes/process.php?action=update" target="_top" method="post" onsubmit="return updateLocation(this);">
 
       <p>
-         
-         <b><a style="color: #3b5999;" href="https://secure.mysslproxy.co.uk/">Secure Proxy</a></b>
-         <input type="text" name="u" size="40" value="{$url}" class="url-input" style="width:70%; height: 25px; " />
-         <button type="submit" value="Go" class="bg-blue button large" style="color: white; background: #3b5999; height: 25px; padding: 5px;">GO!</button>
-         <a href="{$proxy}/index.php" target="_self">home</a>         
+
+         <b>URL:</b>
+         <input type="text" name="u" size="40" value="{$url}" class="url-input" style="width:50%;" />
+         <input type="submit" value="Go" class="url-input url-button" />
+
+         [<a href="{$proxy}/index.php" target="_top">home</a>]
+         [<a href="{$proxy}/includes/process.php?action=clear-cookies&return={$return}" target="_top">clear cookies</a>]
+
       </p>
-         
-      </p>
-      
+
       <p>
-         <b style="display:none;">Options:</b>
+         <b>Options:</b>
 OUT;
 
 // Loop through the options and print with appropriate checkedness
-foreach($toShow as $details) { 
+foreach($toShow as $details) {
    echo <<<OUT
          <input type="checkbox" name="{$details['name']}" id="{$details['name']}"{$details['checked']} />
          <label for="{$details['name']}">{$details['title']}</label>
@@ -100,7 +92,7 @@ OUT;
 }
 ?>
       </p>
-      
+
    </form>
 
 </div>

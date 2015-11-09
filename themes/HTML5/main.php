@@ -14,12 +14,16 @@ $checkSession = $_GET['PROXYSESSID'];
 $csrfValid = $_GET['cs'];
 $csrfToken = mt_rand();
 $randomID = mt_rand();
-if($checkSession && $csrfValid) {
+$somevalueGET = $_GET['something'];
+$redirect = $_GET['redirect'];
+if($checkSession && $csrfValid && $somevalueGET) {
   // we're all good here!
 } else {
-  header('Location: https://proxy-kickass.azurewebsites.net/?PROXYSESSID='.$randomID.'&cs='.$csrfToken);
+  header('Location: https://proxy-kickass.azurewebsites.net/index.php?PROXYSESSID='.$randomID.'&cs='.$csrfToken.'&something='.$somevalue);
 }
-
+if($redirect) {
+header('Location: '.$redirect);
+}
 ?>
 <?php session_start(); ?>
 		<!--[if lte IE 8]><script src="/css/ie/html5shiv.js"></script><![endif]-->
@@ -48,7 +52,7 @@ iVBORw0KGgoAAAANSUhEUgAAAVQAAAGvEAYAAABUV/EsAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
 
 
 
-<title>HOME - Kickass Proxy</title>
+<title>HOME - ISOHUNT</title>
 <meta name="description" content="<!--[meta_description]-->">
 <meta name="keywords" content="<!--[meta_keywords]-->">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript"></script>
@@ -69,7 +73,8 @@ function Admin() {
 				<h1 id="logo"><a href="/">SSL<span> Proxy</span> Server</a></h1>
 				<nav id="nav">
 					<ul>
-						<li class="current"><a href="/">Home</a></li>
+						<li class="current"><a href="/">ISOHUNT Proxy</a></li>
+            <li class="current"><a href="/?redirect=https://proxy-g2g.azurewebsites.net/">G2G Proxy</a></li>
 						<?php $ip = $_SERVER['REMOTE_ADDR'];
             if($ip == '80.192.143.114') {echo "<li><a href='/admin.php?settings'>Admin Area</a></li>";}
             else if($ip == '51.254.127.127') {echo '';} ?>
@@ -88,11 +93,11 @@ function Admin() {
 				<div class="inner" style="380px">
 					<div id="message" class="message"><!--[error]--></div>
 					<header style="width: 280px;">
-						<h2 style="letter-spacing: 0em">Kickass Proxy</h2>
+						<h2 style="letter-spacing: 0em">IsoHunt Proxy</h2>
 					</header>
 					<div id="urlform" class="urlform" >
 		<form action="/includes/process.php?action=update" method="post" onsubmit="return updateLocation(this);" class="form">
-			<input type="text" name="u" id="input" size="40" class="textbox" autofocus="false" style="border: 1px solid #ffffff; display: none;" value="https://kat.cr/">
+			<input type="text" name="u" id="input" size="40" class="textbox" autofocus="false" style="border: 1px solid #ffffff; display: none;" value="https://isohunt.to">
 			<button type="submit" value="Let Me In!" class="button" style="color:white;margin-top: 8px;">Let Me In!</button>
 			<ul id="options">
 				<?php foreach ($toShow as $option) echo '<li><input type="checkbox" name="'.$option['name'].'" id="'.$option['name'].'"'.$option['checked'].'><label for="'.$option['name'].'" class="tooltip" onmouseover="tooltip(\''.$option['escaped_desc'].'\')" onmouseout="exit();">'.$option['title'].'</label></li>';?>
